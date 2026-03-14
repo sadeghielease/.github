@@ -333,16 +333,18 @@
             
             if (match && match[1]) {
                 const fullText = match[1];
+                const lowerText = fullText.toLowerCase();
                 const displayText = fullText.replace(/-/g, ' ');
                 const capitalizedText = capitalizeWords(displayText);
                 
                 return {
                     displayName: capitalizedText,
-                    pathDisplay: '/' + fullText + '.github.io',
-                    subtitle: 'Content package for ' + fullText + '.github.io'
+                    pathDisplay: '/' + lowerText + '.github.io',
+                    subtitle: 'Content package for ' + lowerText + '.github.io'
                 };
             } else {
                 const host = window.location.hostname || "";
+                const lowerHost = host.toLowerCase();
                 const projectSlug = host.replace(".github.io", "");
                 const pretty = projectSlug
                     .replace(/-/g, " ")
@@ -353,8 +355,8 @@
                 
                 return {
                     displayName: pretty || "Content",
-                    pathDisplay: "/" + (host || "secure-content"),
-                    subtitle: "Content package for " + (host || "secure-content")
+                    pathDisplay: "/" + (lowerHost || "secure-content"),
+                    subtitle: "Content package for " + (lowerHost || "secure-content")
                 };
             }
         }
